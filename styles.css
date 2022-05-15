@@ -1,0 +1,50 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+:root{
+    --color-button: rgb(129,59,219);
+    --color-btnhover: rgb(238, 91, 252);
+}
+
+
+
+.container{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.high-scores {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.timer {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.btn-grid {
+    display: grid;
+    gap: 10px;
+    margin: 10px;
+}
+
+.btn{
+    background-color: var(--color-button);
+    color: whitesmoke;
+    border-radius: 5px;
+    padding: 15px 20px;
+    outline: none;
+    border: none;
+}
+
+.btn:hover {
+    background-color: var(--color-btnhover);
+}
