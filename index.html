@@ -10,15 +10,20 @@
 </head>
 <body>
     <section class="container">
-    <div class="questions">
-        Questions
-    </div>
-    <div id="answer-btns" class="btn-grid">
-        <button class="btn">Button 1</button>
-        <button class="btn">Button 2</button>
-        <button class="btn">Button 3</button>
-        <button class="btn">Button 4</button>
-    </div>
+        <button id ="start-btn" class="btn">Start Assessment</button>
+        <div id= "question-container" class="hide">
+            <div id="question">Question</div>
+        </div>
+        <div id="answer-btns" class="btn-grid hide">
+            <button class="btn">Button 1</button>
+            <button class="btn">Button 2</button>
+            <button class="btn">Button 3</button>
+            <button class="btn">Button 4</button>
+        </div>
+        <div id="response" class="hide">
+            <div id="wrong" class="hide">Wrong</div>
+            <div id="correct" class="hide">Correct</div>
+        </div>
     </section>  
     <div class="high-scores">View High Scores</div>
     <div class="timer">Timer</div>
