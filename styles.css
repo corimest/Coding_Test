@@ -68,14 +68,14 @@
     width: 45%;
 }
 
-#wrong { 
+.wrong { 
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     font-weight: bold;
     color: gray
 }
 
-#correct { 
+.correct { 
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     font-weight: bold;

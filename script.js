@@ -2,6 +2,8 @@ const startButton = document.getElementById('start-btn')
 const answerBtns = document.getElementById('answer-btns')
 const questionsEl = document.getElementById('question-container')
 const questEl = document.getElementById('question')
+const wrongEl = document.getElementById('wrong')
+const correctEl = document.getElementById('correct')
 
 let shuffledQuestions, currentQuestionindex
 
@@ -12,7 +14,7 @@ startButton.addEventListener('click', startQuiz)
 function startQuiz() {
     console.log('Started')
     startButton.classList.add('hide')
-    shuffledQuestions = questions.sort(() => Math.random() - .5)
+   
     currentQuestionindex = 0
     questionsEl.classList.remove('hide')
     answerBtns.classList.remove('hide')
@@ -20,11 +22,15 @@ function startQuiz() {
 }
 
 function setNextQuestion () {
+
     resetState()
-    showQuestion(shuffledQuestions[currentQuestionindex])
+    showQuestion(questions[currentQuestionindex])
+    currentQuestionindex++
+   
 }
 
 function showQuestion(question) {
+ 
     questEl.innerText = question.question
     question.answers.forEach(answer => {
         const button = document.createElement('button')
@@ -33,7 +39,7 @@ function showQuestion(question) {
         if (answer.correct) {
             button.dataset.correct = answer.correct
         }
-        button.addEventListener('click', selectAnswer)
+       button.addEventListener('click', selectAnswer)
         answerBtns.appendChild(button)
     })
 }
@@ -47,22 +53,29 @@ function resetState() {
 
 function selectAnswer (event) {
     const selectedButton = event.target
+    
     const correct = selectedButton.dataset.correct
-    setStatusClass(document.body, correct)
-    Array.from(answerBtns.children).forEach(button => {
-        setStatusClass(button, button.dataset.correct)
-    })
+    
 
+    setStatusClass(selectedButton,Boolean(correct))
+   
 }
 
 function setStatusClass(element, correct) {
-    clearStatusClass(element)
+  
     if(correct) {
-        element.classList.add('correct')
+        correctEl.style.display="block"
+        console.dir(correctEl)
+        wrongEl.style.display="none"
+ 
     }
-    else {
-        element.classList.add('wrong')
+    else{
+        correctEl.style.display="none"
+        wrongEl.style.display="block"
+   
     }
+    clearStatusClass(element)
+    setNextQuestion()
 }
 
 function clearStatusClass (element) {
