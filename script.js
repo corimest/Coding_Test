@@ -4,28 +4,47 @@ const questionsEl = document.getElementById('question-container')
 const questEl = document.getElementById('question')
 const wrongEl = document.getElementById('wrong')
 const correctEl = document.getElementById('correct')
+var timer = document.querySelector('timer')
+var timeLeft = document.getElementById("timeLeft")
+
 
 let shuffledQuestions, currentQuestionindex
-
+let totalTime = 150
 
 startButton.addEventListener('click', startQuiz)
 
 
 function startQuiz() {
-    console.log('Started')
     startButton.classList.add('hide')
+
+    // Timer function!!!!
+    var startTime = setInterval(function() {
+        timeLeft.textContent = totalTime; 
+        totalTime--; 
+            if(totalTime <= 0) {
+                clearInterval(startTime); 
+                if (currentQuestionindex < questions.length - 1){
+                    gameOver()
+                }
+            }
+        }, 1000);
+    //end Timer function!!
    
-    currentQuestionindex = 0
+     currentQuestionindex = 0
+    
     questionsEl.classList.remove('hide')
     answerBtns.classList.remove('hide')
+    
     setNextQuestion()
 }
 
-function setNextQuestion () {
 
+function setNextQuestion () {
+    
     resetState()
     showQuestion(questions[currentQuestionindex])
     currentQuestionindex++
+    
    
 }
 
@@ -130,3 +149,4 @@ const questions = [
         ]
     }
 ]
+
